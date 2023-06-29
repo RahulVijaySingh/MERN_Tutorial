@@ -16,15 +16,27 @@ const TextForm = (props) => {
         settext(newtext);
     }
 
-    let clear = () => {
-        let newtext = "";
-        settext(newtext);
-    }
-
+   
     let copy=()=>{
         let text=document.getElementById("mybox");
         text.select();
         window.navigator.clipboard.writeText(text.value)
+    }
+
+
+    // newString = string.replace(/\s+/g,'');    string.replace(/\s{2,}/g, ' ').trim()
+    let extraSpace = () => {
+       
+        // let newtext=text.split(/[ ]+/);        
+        // settext(newtext.join(" "));
+        let newtext=text.replace(/\s+/g," ")
+        settext(newtext);
+        
+    }
+
+    let clear = () => {
+        let newtext = "";
+        settext(newtext);
     }
 
     const [text, settext] = useState("Enter the Text");
@@ -48,10 +60,14 @@ const TextForm = (props) => {
                 <button className="btn btn-primary mx-2" onClick={copy}>
                     Copy Text
                 </button>
+                <button className="btn btn-primary mx-2" onClick={extraSpace}>
+                    Remove Extra Space
+                </button>
 
                 <button className="btn btn-primary mx-2" onClick={clear}>
                     Clear the rext
                 </button>
+                
                
             </div>
 
