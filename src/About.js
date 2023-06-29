@@ -1,17 +1,32 @@
 import React, { useState } from 'react'
 
 const About = () => {
+
+    const [text, setText] = useState("Enable  Dark Mode")
     
 
-    const [myStyle, setmystyle] = useState(
+    const [myStyle, setMyStyle] = useState(
         {
-        color:'white',
-        backgroundColor:'black'
+        color:'black',
+        backgroundColor:'white'
         }
     )
 
     let handletoggle =()=>{
-        if(backgroundColor==='black'){
+        if(myStyle.color==='white'){
+            setMyStyle({
+                color:'black',
+                backgroundColor:'white'
+            })
+            setText("Enble Dark Mode");
+
+        }
+        else{
+            setMyStyle({
+                color:'white',
+                backgroundColor:'black'
+            })
+            setText("Enble Light Mode");
 
         }
     }
@@ -23,7 +38,7 @@ const About = () => {
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
                     <h2 className="accordion-header">
-                        <button className="accordion-button myStyle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button className="accordion-button myStyle"  style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Accordion Item #1
                         </button>
                     </h2>
@@ -39,7 +54,7 @@ const About = () => {
                             Accordion Item #2
                         </button>
                     </h2>
-                    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div id="collapseTwo" className="accordion-collapse collapse" style={myStyle} data-bs-parent="#accordionExample">
                         <div className="accordion-body">
                             <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                         </div>
@@ -47,18 +62,18 @@ const About = () => {
                 </div>
                 <div className="accordion-item">
                     <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Accordion Item #3
                         </button>
                     </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div id="collapseThree" className="accordion-collapse collapse" style={myStyle} data-bs-parent="#accordionExample">
                         <div className="accordion-body">
                             <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                         </div>
                     </div>
                 </div>
             </div>
-            <button type='button' className="btn btn-primary"  onClick={handletoggle}>Enable Dark Mode</button>
+            <button type='button' className="btn btn-primary"  onClick={handletoggle}>{text}</button>
 
         </div>
     )
