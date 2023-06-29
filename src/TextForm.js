@@ -15,6 +15,9 @@ const TextForm = (props) => {
         let newtext = text.toLowerCase();
         settext(newtext);
     }
+    
+
+
     let clear = () => {
         let newtext = "";
         settext(newtext);

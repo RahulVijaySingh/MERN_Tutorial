@@ -1,20 +1,25 @@
 import React from 'react'
 import Navbar from './Navbar'
-import TextForm from './TextForm'
+import TextForm from './TextForm' 
+import About from './About'
 
 const App = () => {
   return (
     <>
 
-    <Navbar logo="TextUtilsss"/>
-    <div className="container">
+      <Navbar logo="TextUtilsss" /> {/* logo here wiill work as props */}
+      <div className="container my-2">
 
-    <TextForm heading="Enter the text to analyze"/>
+        <TextForm heading="Enter the text to analyze" />
 
-    </div>
+
+        <About />
+
+
+      </div>
 
     </>
-   
+
   )
 }
 
