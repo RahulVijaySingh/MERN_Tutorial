@@ -15,12 +15,16 @@ const TextForm = (props) => {
         let newtext = text.toLowerCase();
         settext(newtext);
     }
-    
-
 
     let clear = () => {
         let newtext = "";
         settext(newtext);
+    }
+
+    let copy=()=>{
+        let text=document.getElementById("mybox");
+        text.select();
+        window.navigator.clipboard.writeText(text.value)
     }
 
     const [text, settext] = useState("Enter the Text");
@@ -33,23 +37,28 @@ const TextForm = (props) => {
 
                 <div className="mb-3">
                     {/* <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label> */}
-                    <textarea className="form-control" value={text} onChange={changeHandling} id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea className="form-control" value={text} onChange={changeHandling} id="mybox" rows="3"></textarea>
                 </div>
                 <button className="btn btn-primary mx-2" onClick={upperChange}>
-                        Change To upper Case
+                    Change To upper Case
                 </button>
                 <button className="btn btn-primary mx-2" onClick={lowCase}>
-                        Change To lower Case
+                    Change To lower Case
                 </button>
+                <button className="btn btn-primary mx-2" onClick={copy}>
+                    Copy Text
+                </button>
+
                 <button className="btn btn-primary mx-2" onClick={clear}>
-                        Clear the rext
+                    Clear the rext
                 </button>
+               
             </div>
 
             <div className="container">
                 <h3>Text  Summary</h3>
                 <p> {text.split(" ").length} words,  {text.length}characters</p>
-                <p> {0.08* text.split(" ").length} Minutes required</p>
+                <p> {0.08 * text.split(" ").length} Minutes required</p>
                 <h2>Preview</h2>
                 <p>{text}</p>
             </div>
